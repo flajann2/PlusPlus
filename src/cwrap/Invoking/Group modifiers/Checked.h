@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  Checked.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_CHECKED_H
-#define PLUSPLUS_CHECKED_H
 
 #include <utility>
 
@@ -107,4 +105,3 @@ namespace cwrap
        }
    }
 
-#endif

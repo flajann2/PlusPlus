@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  Result.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_RESULT_H
-#define PLUSPLUS_RESULT_H
 
 #include "Checked.h"
 #include "Thrown.h"
@@ -158,5 +156,4 @@ namespace cwrap
        }
    }
 
-#endif
 

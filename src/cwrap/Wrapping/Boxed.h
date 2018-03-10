@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  Boxed.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_BOXED_H
-#define PLUSPLUS_BOXED_H
 
 #include <utility>
 #include <iosfwd>
@@ -138,4 +136,3 @@ namespace cwrap
        };
    }
 
-#endif

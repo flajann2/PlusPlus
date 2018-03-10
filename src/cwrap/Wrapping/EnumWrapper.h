@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  EnumWrapper.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_ENUMWRAPPER_H
-#define PLUSPLUS_ENUMWRAPPER_H
 
 #include <type_traits>
 
@@ -36,4 +34,3 @@ namespace cwrap
        };
    }
 
-#endif

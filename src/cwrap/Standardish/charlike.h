@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  charlike.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_CHARLIKE_H
-#define PLUSPLUS_CHARLIKE_H
 
 #include <type_traits>
 
@@ -44,4 +42,3 @@ namespace cwrap
        }
    }
 
-#endif

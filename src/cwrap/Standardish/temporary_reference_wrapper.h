@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  temporary_reference_wrapper.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_STDISH_TEMPORARY_REFERENCE_WRAPPER_H
-#define PLUSPLUS_STDISH_TEMPORARY_REFERENCE_WRAPPER_H
 
 #include <utility>
 
@@ -70,4 +68,3 @@ namespace cwrap
        }
    }
 
-#endif

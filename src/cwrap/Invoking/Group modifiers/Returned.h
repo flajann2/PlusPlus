@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  Returned.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_RETURNED_H
-#define PLUSPLUS_RETURNED_H
 
 #include <tuple>
 
@@ -46,4 +44,3 @@ namespace cwrap
     inline ReturnSelector<false> NotReturned()     { return ReturnSelector<false>(); }
    }
 
-#endif

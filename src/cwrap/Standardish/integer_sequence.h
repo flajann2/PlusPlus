@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  integer_sequence.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_INTEGER_SEQUENCE_H
-#define PLUSPLUS_INTEGER_SEQUENCE_H
 
 #include <cstddef>
 #include <type_traits>
@@ -74,4 +72,3 @@ namespace cwrap
        }
    }
 
-#endif

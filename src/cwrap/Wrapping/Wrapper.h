@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  Wrapper.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_WRAPPER_H
-#define PLUSPLUS_WRAPPER_H
 
 #include "Boxed.h"
 #include "EnumWrapper.h"
@@ -101,4 +99,3 @@ namespace cwrap
     using Unwrapper = Inverted< WrapperFamily >;
    }
 
-#endif

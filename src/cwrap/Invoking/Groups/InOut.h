@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  InOut.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_INOUT_H
-#define PLUSPLUS_INOUT_H
 
 #include "Checked.h"
 #include "Thrown.h"
@@ -100,4 +98,3 @@ namespace cwrap
        }
    }
 
-#endif

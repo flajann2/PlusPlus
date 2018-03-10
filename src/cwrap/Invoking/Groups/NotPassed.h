@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  NotPassed.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_NOTPASSED_H
-#define PLUSPLUS_NOTPASSED_H
 
 #include "Checked.h"
 #include "Thrown.h"
@@ -98,4 +96,3 @@ namespace cwrap
        }
    }
 
-#endif

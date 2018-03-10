@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  arraylike.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_STDISH_ARRAYLIKE_H
-#define PLUSPLUS_STDISH_ARRAYLIKE_H
 
 #include <type_traits>
 #include <string>
@@ -63,4 +61,3 @@ namespace cwrap
        }
    }
 
-#endif

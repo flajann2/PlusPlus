@@ -1,4 +1,3 @@
-#pragma once 
 #pragma once
 //
 //  GroupMakers.h
@@ -8,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_GROUPMAKERS_H
-#define PLUSPLUS_GROUPMAKERS_H
 
 #include "Returned.h"
 #include "Thrown.h"

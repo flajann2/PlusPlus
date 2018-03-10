@@ -1,4 +1,3 @@
-#pragma once 
 #pragma once
 //
 //  Conjugated.h

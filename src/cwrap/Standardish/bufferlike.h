@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 //
 //  bufferlike.h
 //  cwrap
@@ -7,8 +7,6 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PLUSPLUS_STDISH_BUFFERLIKE_H
-#define PLUSPLUS_STDISH_BUFFERLIKE_H
 
 #include "arraylike.h"
 #include "charlike.h"
@@ -66,4 +64,3 @@ namespace cwrap
        }
    }
 
-#endif
