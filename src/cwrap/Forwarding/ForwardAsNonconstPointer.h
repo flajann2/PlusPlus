@@ -1,7 +1,7 @@
 #pragma once
 //
 //  ForwardAsNonconstPointer.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/28/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -14,7 +14,7 @@
 // ForwardAsNonconstPointer<T> is a forwarder functor that passes objects of type T
 // by non-const pointer, even if T is const.  This is, of course, dangerous.
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class T, bool isConst = std::is_const<T>::value >
     struct PointerConstCaster;

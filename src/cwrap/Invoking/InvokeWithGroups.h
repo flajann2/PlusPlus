@@ -1,7 +1,7 @@
 #pragma once
 //
 //  InvokeWithGroups.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/20/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -46,7 +46,7 @@
     A basic result group is provided by Result.h.
 ***/
 
-namespace PlusPlus
+namespace cwrap
    {
     inline bool AnyParameterGroupFailed()
        {

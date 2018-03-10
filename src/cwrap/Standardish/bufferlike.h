@@ -1,6 +1,6 @@
 //
 //  bufferlike.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 9/5/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -20,14 +20,14 @@
     bufferlike_size     provides a uniform interface to the size of the buffer.
 */
     
-namespace PlusPlus
+namespace cwrap
    {
     namespace stdish
        {
         template < class T >
         using is_bufferlike
-            = std::integral_constant< bool, PlusPlus::stdish::is_arraylike<T>::value 
-                                            && PlusPlus::stdish::is_charlike< PlusPlus::stdish::arraylike_element<T> >::value >;
+            = std::integral_constant< bool, cwrap::stdish::is_arraylike<T>::value 
+                                            && cwrap::stdish::is_charlike< cwrap::stdish::arraylike_element<T> >::value >;
         
         
         
@@ -35,8 +35,8 @@ namespace PlusPlus
         auto bufferlike_data( B& b )
         -> typename std::enable_if< is_bufferlike<B>::value, char * >::type
            {
-            using PlusPlus::stdish::charlike_cast;
-            using PlusPlus::stdish::arraylike_data;
+            using cwrap::stdish::charlike_cast;
+            using cwrap::stdish::arraylike_data;
             
             return charlike_cast< char * >( arraylike_data( b ) );
            }
@@ -45,8 +45,8 @@ namespace PlusPlus
         auto bufferlike_data( const B& b )
         -> typename std::enable_if< is_bufferlike<B>::value, const char * >::type
            {
-            using PlusPlus::stdish::charlike_cast;
-            using PlusPlus::stdish::arraylike_data;
+            using cwrap::stdish::charlike_cast;
+            using cwrap::stdish::arraylike_data;
             
             return charlike_cast< const char * >( arraylike_data( b ) );
            }
@@ -57,8 +57,8 @@ namespace PlusPlus
         auto bufferlike_size( const B& b )
         -> typename std::enable_if< is_bufferlike<B>::value, std::size_t >::type
            {
-            using PlusPlus::stdish::charlike_cast;
-            using PlusPlus::stdish::arraylike_data;
+            using cwrap::stdish::charlike_cast;
+            using cwrap::stdish::arraylike_data;
             
             return arraylike_size( b ) * sizeof( arraylike_element<B> );
            }

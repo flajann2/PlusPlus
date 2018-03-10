@@ -1,6 +1,6 @@
 //
 //  Boxed.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 7/11/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -40,9 +40,9 @@
     can't be instantiated if convertsToBool is missing or false.
 */
 
-namespace PlusPlus_Boxed
+namespace cwrap_Boxed
    {
-    // This template gets its own namespace so that its instantiations are not associated with the PlusPlus namespace.
+    // This template gets its own namespace so that its instantiations are not associated with the cwrap namespace.
     // Instantiations are associated with the namespace of the tag type, but not the content type.
     
     template < class TheTag >
@@ -116,10 +116,10 @@ namespace PlusPlus_Boxed
     template < class Tag > auto operator>>( std::istream& stream,       Boxed<Tag>& b ) -> typename std::enable_if< Tag::hasStreaming, std::istream& >::type    { return stream >> b.Get(); }
    };
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class BoxTag >
-    using Boxed = ::PlusPlus_Boxed::Boxed< BoxTag >;
+    using Boxed = ::cwrap_Boxed::Boxed< BoxTag >;
     
     template < class TheWrappedType >
     class BoxedWrapper

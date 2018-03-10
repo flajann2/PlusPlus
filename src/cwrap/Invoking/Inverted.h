@@ -1,7 +1,7 @@
 #pragma once
 //
 //  Inverted.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/28/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -55,7 +55,7 @@
     while its Inverse<W> member wraps back to W.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class TheWrappedType >
     class InvertibleIdentityFunctor

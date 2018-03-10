@@ -1,7 +1,7 @@
 #pragma once
 //
 //  Prefixed.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/27/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -20,11 +20,11 @@
     
         f( F<P>()( p )... )
     
-    In PlusPlus::Invoke, Prefixed is combined with temporary_reference_wrapper to 
+    In cwrap::Invoke, Prefixed is combined with temporary_reference_wrapper to 
     avoid copying the invoked function.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < template <class P> class FunctorFamily,
                class Callable,

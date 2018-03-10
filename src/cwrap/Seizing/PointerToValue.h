@@ -1,14 +1,11 @@
 #pragma once
 //
 //  PointerToValue.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 7/11/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
-
-#ifndef PLUSPLUS_POINTERLIKE_H
-#define PLUSPLUS_POINTERLIKE_H
 
 #include <cstddef>
 #include <utility>
@@ -36,7 +33,7 @@
     CopyAssignable, Destructible, and Swappable, all without throwing exceptions.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class TheValueType >
     class PointerToValue
@@ -65,5 +62,3 @@ namespace PlusPlus
             friend bool operator!=( const PointerToValue& a, const PointerToValue& b )  { return !( a == b ); }
        };
    }
-
-

@@ -1,6 +1,6 @@
 //
 //  NotPassed.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/22/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -28,7 +28,7 @@
     and causes the exception thrown on failure to be derived from p... .
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class FailureChecker, bool thrown, bool returned, class... P >
     class UnpassedParameterGroup

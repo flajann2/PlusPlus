@@ -1,6 +1,6 @@
 //
 //  Result.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/20/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -30,7 +30,7 @@
     ErrorResult<R>(f)       is equivalent to Result<R>() + Checked( f )         + NotReturned() + Thrown()
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class FailureChecker, bool thrown, bool returned, class R >
     class ResultGroup

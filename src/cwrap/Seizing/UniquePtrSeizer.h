@@ -1,7 +1,7 @@
 #pragma once
 //
 //  UniquePtrSeizer.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/23/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -16,11 +16,11 @@
     specializations of Seizer.  It constructs a unique_ptr when seizing, and calls release 
     when releasing the resource.
     
-    It has special behavior when D::pointer is a specialization of PlusPlus::PointerToValue.
+    It has special behavior when D::pointer is a specialization of cwrap::PointerToValue.
     In this case it also strips the PointerToValue from the released resource.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class UniquePtrType, class PointerType = typename UniquePtrType::pointer >
     class UniquePtrSeizer
@@ -47,5 +47,3 @@ namespace PlusPlus
         Released Inverse( Seized&& s ) const                { return *s.release(); }
        };
    }
-
-

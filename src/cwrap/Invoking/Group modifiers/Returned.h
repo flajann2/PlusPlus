@@ -1,6 +1,6 @@
 //
 //  Returned.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/16/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -23,7 +23,7 @@
         Result<T>() + NotReturned()         expects a result of type T, but does not return it
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < bool thrown > struct ReturnSelector;
     

@@ -1,6 +1,6 @@
 //
 //  Wrapper.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 7/11/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -19,7 +19,7 @@
 /*
     A wrapper family is an invertible functor family (see Inverted.h) that establishes a correspondence 
     between a strong type (often a class or enum class) and a weaker underlying type.
-    It's expected that each library relying on PlusPlus will have a single wrapper family 
+    It's expected that each library relying on cwrap will have a single wrapper family 
     to handle its wrapping uniformly.
 
     Unwrapping is expected to be idempotent: if an object is double-unwrapped using the same wrapper family, 
@@ -28,16 +28,16 @@
     This file provides three starting points, intended to be used as base classes for a library's 
     wrapper, like this:
     
-    namespace UnderlyingLibrary_PlusPlus
+    namespace UnderlyingLibrary_cwrap
        {
-        template < class W > struct Wrapper: PlusPlus::DefaultWrapper<W> {};
+        template < class W > struct Wrapper: cwrap::DefaultWrapper<W> {};
        }
     
-    The Wrapper template can then be specialized to handle the particular wrapping needs of UnderlyingLibrary_PlusPlus;
-    Boxed.h and EnumWrapper.h provide wrapper implementations for PlusPlus::Boxed and enum types, which
+    The Wrapper template can then be specialized to handle the particular wrapping needs of UnderlyingLibrary_cwrap;
+    Boxed.h and EnumWrapper.h provide wrapper implementations for cwrap::Boxed and enum types, which
     can also be used by inheritance:
     
-    namespace UnderlyingLibrary_PlusPlus
+    namespace UnderlyingLibrary_cwrap
        {
         struct SomeBoxTag
            {
@@ -45,14 +45,14 @@
             static ContentType DefaultContent()     { return 0; }
            };
         
-        using SomeBoxType = PlusPlus::Boxed< SomeBoxTag >;
+        using SomeBoxType = cwrap::Boxed< SomeBoxTag >;
         
-        template <> struct Wrapper< SomeBoxType >: PlusPlus::BoxedWrapper< SomeBoxType > {};
+        template <> struct Wrapper< SomeBoxType >: cwrap::BoxedWrapper< SomeBoxType > {};
         
         
         enum class SomeEnumType: int;
         
-        template <> struct Wrapper< SomeEnumType  >: PlusPlus::EnumWrapper< SomeEnumType > {};
+        template <> struct Wrapper< SomeEnumType  >: cwrap::EnumWrapper< SomeEnumType > {};
        }
     
     
@@ -60,15 +60,15 @@
         
         DefaultWrapper                      Trivial for all types.
         
-        AllBoxedTypesAreWrapped             This unwrapper assumes all PlusPlus::Boxed types may be unwrapped by 
-                                            UnderlyingLibrary_PlusPlus.  Don't use this if the underlying library uses PlusPlus::Boxed.
-                                            (If the underlying library does use PlusPlus, something must have gone wrong.)
+        AllBoxedTypesAreWrapped             This unwrapper assumes all cwrap::Boxed types may be unwrapped by 
+                                            UnderlyingLibrary_cwrap.  Don't use this if the underlying library uses cwrap::Boxed.
+                                            (If the underlying library does use cwrap, something must have gone wrong.)
         
-        AllBoxedAndEnumTypesAreWrapped      This unwrapper assumes all enums and PlusPlus::Boxed types may be unwrapped by 
-                                            SomeLibrary.  Don't use this if the underlying library uses enums or PlusPlus::Boxed.
+        AllBoxedAndEnumTypesAreWrapped      This unwrapper assumes all enums and cwrap::Boxed types may be unwrapped by 
+                                            SomeLibrary.  Don't use this if the underlying library uses enums or cwrap::Boxed.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class W > using DefaultWrapper = InvertibleIdentityFunctor<W>;
 

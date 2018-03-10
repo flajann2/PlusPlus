@@ -1,6 +1,6 @@
 //
 //  EnumWrapper.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/23/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -19,7 +19,7 @@
     a different type can be specified if the unwrapped type is also an enumerated type.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class TheWrappedType,
                class TheUnwrappedType = typename std::underlying_type< TheWrappedType >::type >

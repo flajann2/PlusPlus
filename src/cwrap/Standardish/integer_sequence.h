@@ -1,6 +1,6 @@
 //
 //  integer_sequence.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/30/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -15,10 +15,10 @@
 
 /*
     This is roughly the template std::integer_sequence from C++14.
-    Since PlusPlus is currently written to C++11, it needs its own.
+    Since cwrap is currently written to C++11, it needs its own.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     namespace stdish
        {

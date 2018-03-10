@@ -1,7 +1,7 @@
 #pragma once
 //
 //  Invoke.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/28/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -15,8 +15,8 @@
 #include <utility>
 
 /*
-    PlusPlus::Invoke calls a function, performing the steps necessary to adjust to its calling convention.
-    Because there are so many steps to the adjustment, it's perhaps the only function in PlusPlus that is 
+    cwrap::Invoke calls a function, performing the steps necessary to adjust to its calling convention.
+    Because there are so many steps to the adjustment, it's perhaps the only function in cwrap that is 
     really complicated.  These are the steps, grouped by the function that handles them:
     
     InvokeWithGroups (entering)
@@ -70,7 +70,7 @@
         ErrorResult<Type>( FailureTest )          -- Seize/wrap the result as Type, check for failure (fail when test returns true), and throw it.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     // When the result group asks for a reference, ask the conjugated functions for references.
     // The conjugated functions check to make sure no temporary they create is returned by reference.

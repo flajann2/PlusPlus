@@ -1,7 +1,7 @@
 #pragma once
 //
 //  GroupMakers.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/30/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -20,45 +20,45 @@
 #include "Result.h"
 
 /*
-    The namespace PlusPlus::GroupMakers contains all the names needed for 
+    The namespace cwrap::GroupMakers contains all the names needed for 
     creating the basic pararameter and result groups, gathered together 
     for use in a using-directive.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     namespace GroupMakers
        {
         // Groups
-            using PlusPlus::In;
+            using cwrap::In;
             
-            using PlusPlus::Out;
-            using PlusPlus::OutFailureFlag;
-            using PlusPlus::OutSuccessFlag;
-            using PlusPlus::OutError;
+            using cwrap::Out;
+            using cwrap::OutFailureFlag;
+            using cwrap::OutSuccessFlag;
+            using cwrap::OutError;
             
-            using PlusPlus::InOut;
+            using cwrap::InOut;
             
-            using PlusPlus::NotPassed;
-            using PlusPlus::ExceptionToThrow;
+            using cwrap::NotPassed;
+            using cwrap::ExceptionToThrow;
             
-            using PlusPlus::Result;
-            using PlusPlus::NoResult;
-            using PlusPlus::FailureFlagResult;
-            using PlusPlus::SuccessFlagResult;
-            using PlusPlus::ErrorResult;
+            using cwrap::Result;
+            using cwrap::NoResult;
+            using cwrap::FailureFlagResult;
+            using cwrap::SuccessFlagResult;
+            using cwrap::ErrorResult;
             
         // Modifiers
-            using PlusPlus::FailsWhen;
-            using PlusPlus::SucceedsWhen;
-            using PlusPlus::FailsWhenTrue;
-            using PlusPlus::FailsWhenFalse;
+            using cwrap::FailsWhen;
+            using cwrap::SucceedsWhen;
+            using cwrap::FailsWhenTrue;
+            using cwrap::FailsWhenFalse;
             
-            using PlusPlus::Returned;
-            using PlusPlus::NotReturned;
+            using cwrap::Returned;
+            using cwrap::NotReturned;
             
-            using PlusPlus::Thrown;
-            using PlusPlus::NotThrown;
+            using cwrap::Thrown;
+            using cwrap::NotThrown;
        }
    }
 

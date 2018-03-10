@@ -1,6 +1,6 @@
 //
 //  Checked.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/16/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -21,7 +21,7 @@
         Out<T...>() + SucceedsWhen( f )     fails when f( outputs... ), converted to bool, is false
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     struct NeverFails
        {

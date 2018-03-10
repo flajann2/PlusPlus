@@ -1,7 +1,7 @@
 #pragma once
 //
 //  Forwarder.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/24/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -15,7 +15,7 @@
 /*
     A forwarder family is functor template that converts references into pointers as necessary to 
     match the calling conventions of an underlying library.  It's expected that each library using 
-    PlusPlus will define one forwarder, and specialize it as necessary.
+    cwrap will define one forwarder, and specialize it as necessary.
     
     Because forwarders are used after resources have been released from their ownership classes,
     forwarders must not throw exceptions.
@@ -23,9 +23,9 @@
     This file provides several starting points, intended to be used as base classes for a library's 
     forwarder, like this:
     
-    namespace UnderlyingLibrary_PlusPlus
+    namespace UnderlyingLibrary_cwrap
        {
-        template < class W > struct Forwarder: PlusPlus::DefaultForwarder<W> {};
+        template < class W > struct Forwarder: cwrap::DefaultForwarder<W> {};
        }
     
     
@@ -43,7 +43,7 @@
                                                         as pointers, casting away constness. This, of course, is dangerous.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class T >
     struct DefaultForwarder

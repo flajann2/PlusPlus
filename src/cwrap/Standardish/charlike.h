@@ -1,6 +1,6 @@
 //
 //  charlike.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 9/5/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -15,7 +15,7 @@
     is_charlike and charlike_cast handle the safe(ish) reinterpret casts between character types.
 */
 
-namespace PlusPlus
+namespace cwrap
    {    
     namespace stdish
        {

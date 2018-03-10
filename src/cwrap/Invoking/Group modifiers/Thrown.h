@@ -1,6 +1,6 @@
 //
 //  Thrown.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/16/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -18,7 +18,7 @@
         NotPassed( p ) + Thrown()   in addition to any other bases, the exception will be derived from p
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < bool thrown > struct ThrowSelector;
     

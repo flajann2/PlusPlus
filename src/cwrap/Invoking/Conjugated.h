@@ -1,7 +1,7 @@
 #pragma once
 //
 //  Conjugated.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 7/29/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -15,7 +15,7 @@
     Conjugate< R, W >( f ) produces a functor that calls f, prefixed by applying the inverse of W to each input,
     and applying W to each output.  The specialization of W for R is applied to the function.
     
-    W must be an invertible functor family (see Inverted.h).  In PlusPlus::Invoke, functors are conjugated 
+    W must be an invertible functor family (see Inverted.h).  In cwrap::Invoke, functors are conjugated 
     by both wrappers and seizers, but the names used internally in this file follow the nomenclature of wrapping.
     
     Any parameters passed as lvalue references are treated as both inputs and outputs.  When unwrapping such a 
@@ -31,7 +31,7 @@
     Conjugated may be combined with temporary_reference_wrapper to avoid copying f.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class T > using is_lvalue_reference_to_nonconst
         = std::integral_constant< bool, std::is_lvalue_reference< T >::value && !std::is_const< typename std::remove_reference< T >::type >::value >;

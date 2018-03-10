@@ -1,7 +1,7 @@
 #pragma once
 //
 //  Seizer.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 7/16/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -15,7 +15,7 @@
 /*
     A seizer family is an invertible functor family (see Inverted.h) that establishes a correspondence 
     between a ownership-bearing type (usually std::unique_ptr; I don't know why any other class would be used)
-    and its underlying resource type.  It's expected that each library relying on PlusPlus will have a 
+    and its underlying resource type.  It's expected that each library relying on cwrap will have a 
     single seizer family to handle seizing and releasing resources uniformly.
 
     The Inverse member of a Seizer -- the releasing function -- is generally overloaded to take either an
@@ -27,17 +27,17 @@
     This file provides two starting points, intended to be used as base classes for a library's 
     seizer, like this:
     
-    namespace UnderlyingLibrary_PlusPlus
+    namespace UnderlyingLibrary_cwrap
        {
-        template < class S > struct Seizer: PlusPlus::DefaultSeizer<S> {};
+        template < class S > struct Seizer: cwrap::DefaultSeizer<S> {};
        }
     
-    The Seizer template can then be spacialized to handle the particular resource needs of UnderlyingLibrary_PlusPlus;
+    The Seizer template can then be spacialized to handle the particular resource needs of UnderlyingLibrary_cwrap;
     UniquePtrSeizer provides a seizer implementations for std::unique_ptr, which can also be used by inheritance:
     
-    namespace UnderlyingLibrary_PlusPlus
+    namespace UnderlyingLibrary_cwrap
        {
-        template <> struct Seizer< std::unique_ptr<Foo> >: PlusPlus::UniquePtrSeizer< std::unique_ptr<Foo> > {};
+        template <> struct Seizer< std::unique_ptr<Foo> >: cwrap::UniquePtrSeizer< std::unique_ptr<Foo> > {};
        }
     
     
@@ -46,16 +46,16 @@
         DefaultSeizer                       Trivial for all types.
         
         AllUniquePtrsAreSeized              This unwrapper assumes all std::unique_ptr types may be released by 
-                                            UnderlyingLibrary_PlusPlus.  If the pointer type in the unique_ptr is 
+                                            UnderlyingLibrary_cwrap.  If the pointer type in the unique_ptr is 
                                             an PointerToValue type, releasing also strips the PointerToValue layer.
                                             Don't use this if the underlying library uses std::unique_ptr.
     
-    I don't see much need for specializing Seizers.  I don't know why one would use PlusPlus when the underlying 
+    I don't see much need for specializing Seizers.  I don't know why one would use cwrap when the underlying 
     library uses unique_ptr, and I don't know why one would need a unique ownership class other than unique_ptr
     (possibly with a disposer that uses PointerToValue).  So the usual case should just be AllUniquePtrsAreSeized.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class W > using DefaultSeizer = InvertibleIdentityFunctor<W>;
 

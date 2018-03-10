@@ -1,6 +1,6 @@
 //
 //  temporary_reference_wrapper.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/30/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -23,11 +23,11 @@
     "use it until you move it" behavior of non-reference objects.  Likewise, 
     the operator() forwards the reference when calles on an rvalue wrapper.
     
-    PlusPlus uses temporary_reference_wrapper to ensure that invoked function 
+    cwrap uses temporary_reference_wrapper to ensure that invoked function 
     object rvalues will have their rvalue operator() called.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     namespace stdish
        {

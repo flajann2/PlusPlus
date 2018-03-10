@@ -1,7 +1,7 @@
 #pragma once
 //
 //  ForwardAsPointer.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/28/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -13,7 +13,7 @@
 // Most objects are passed pointer to themselves; arrays are passed as pointers
 // to their first element.
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class T >                T *       MakePointer( T&  t      )   { return &t; }
     template < class T >                T const * MakePointer( T&& t      )   { return &t; }

@@ -1,6 +1,6 @@
 //
 //  In.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/16/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -29,7 +29,7 @@
     because const references can't be released.
 */
 
-namespace PlusPlus
+namespace cwrap
    {
     template < class FailureChecker, bool thrown, bool returned, class... P >
     class InParameterGroup
