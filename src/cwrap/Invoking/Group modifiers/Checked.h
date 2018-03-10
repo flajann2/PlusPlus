@@ -1,3 +1,4 @@
+#pragma once 
 //
 //  Checked.h
 //  cwrap

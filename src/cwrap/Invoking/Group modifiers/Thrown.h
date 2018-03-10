@@ -1,3 +1,4 @@
+#pragma once 
 //
 //  Thrown.h
 //  cwrap

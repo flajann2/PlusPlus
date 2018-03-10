@@ -1,3 +1,4 @@
+#pragma once 
 //
 //  temporary_reference_wrapper.h
 //  cwrap

@@ -1,3 +1,4 @@
+#pragma once 
 //
 //  Result.h
 //  cwrap

@@ -1,3 +1,4 @@
+#pragma once 
 //
 //  integer_sequence.h
 //  cwrap

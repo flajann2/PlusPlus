@@ -1,3 +1,4 @@
+#pragma once 
 //
 //  EnumWrapper.h
 //  cwrap

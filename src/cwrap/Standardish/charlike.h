@@ -1,3 +1,4 @@
+#pragma once 
 //
 //  charlike.h
 //  cwrap
