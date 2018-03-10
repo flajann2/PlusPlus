@@ -1,3 +1,4 @@
+#pragma once
 //
 //  InvokeWithGroups.h
 //  PlusPlus
@@ -5,9 +6,6 @@
 //  Created by Lisa Lippincott on 8/20/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
-
-#ifndef PLUSPLUS_INVOKEWITHGROUPS_H
-#define PLUSPLUS_INVOKEWITHGROUPS_H
 
 #include "integer_sequence.h"
 
@@ -131,4 +129,3 @@ namespace PlusPlus
        }
    }
 
-#endif

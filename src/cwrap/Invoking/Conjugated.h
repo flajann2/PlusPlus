@@ -1,3 +1,4 @@
+#pragma once
 //
 //  Conjugated.h
 //  PlusPlus
@@ -5,9 +6,6 @@
 //  Created by Lisa Lippincott on 7/29/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
-
-#ifndef PLUSPLUS_CONJUGATED_H
-#define PLUSPLUS_CONJUGATED_H
 
 #include <utility>
 #include <type_traits>
@@ -171,4 +169,4 @@ namespace PlusPlus
        }
    }
 
-#endif
+

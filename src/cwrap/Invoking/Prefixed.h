@@ -1,3 +1,4 @@
+#pragma once
 //
 //  Prefixed.h
 //  PlusPlus
@@ -5,9 +6,6 @@
 //  Created by Lisa Lippincott on 8/27/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
-
-#ifndef PLUEPLUS_PREFIXED_H
-#define PLUEPLUS_PREFIXED_H
 
 #include <utility>
 #include <type_traits>
@@ -75,5 +73,3 @@ namespace PlusPlus
         return Prefixed< FunctorFamily, typename std::decay<Callable>::type >( std::forward<Callable>( function ) );
        }
    }
-
-#endif

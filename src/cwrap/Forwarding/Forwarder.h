@@ -1,3 +1,4 @@
+#pragma once
 //
 //  Forwarder.h
 //  PlusPlus
@@ -5,9 +6,6 @@
 //  Created by Lisa Lippincott on 8/24/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
-
-#ifndef PLUSPLUS_FORWARDER_H
-#define PLUSPLUS_FORWARDER_H
 
 #include "ForwardAsPointer.h"
 #include "ForwardAsNonconstPointer.h"
@@ -78,5 +76,3 @@ namespace PlusPlus
     template < class T > struct ForwardOutputsAndNonscalarsAsNonconstPointers< T, false >: ForwardAsNonconstPointer<T> {};
     template < class T > struct ForwardOutputsAndNonscalarsAsNonconstPointers< T, true  >: ForwardOutputsAsPointers<T> {};
    }
-
-#endif

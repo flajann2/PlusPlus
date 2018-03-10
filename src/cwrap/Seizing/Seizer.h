@@ -1,3 +1,4 @@
+#pragma once
 //
 //  Seizer.h
 //  PlusPlus
@@ -5,9 +6,6 @@
 //  Created by Lisa Lippincott on 7/16/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
-
-#ifndef PLUSPLUS_SEIZER_H
-#define PLUSPLUS_SEIZER_H
 
 #include "UniquePtrSeizer.h"
 #include "Inverted.h"
@@ -83,4 +81,4 @@ namespace PlusPlus
     using Releaser = Inverted< SeizerFamily >;
    }
 
-#endif
+

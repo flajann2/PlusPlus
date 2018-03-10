@@ -1,3 +1,4 @@
+#pragma once
 //
 //  UniquePtrSeizer.h
 //  PlusPlus
@@ -5,9 +6,6 @@
 //  Created by Lisa Lippincott on 8/23/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
-
-#ifndef PLUSPLUS_UNIQUEPTRSEIZER_H
-#define PLUSPLUS_UNIQUEPTRSEIZER_H
 
 #include "PointerToValue.h"
 
@@ -50,4 +48,4 @@ namespace PlusPlus
        };
    }
 
-#endif
+

@@ -1,3 +1,4 @@
+#pragma once
 //
 //  Invoke.h
 //  PlusPlus
@@ -5,9 +6,6 @@
 //  Created by Lisa Lippincott on 8/28/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
-
-#ifndef PLUSPLUS_INVOKE_H
-#define PLUSPLUS_INVOKE_H
 
 #include "InvokeWithGroups.h"
 #include "Prefixed.h"
@@ -138,4 +136,4 @@ namespace PlusPlus
        }
    }
 
-#endif
+

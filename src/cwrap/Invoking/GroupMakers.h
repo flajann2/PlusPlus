@@ -1,3 +1,4 @@
+#pragma once
 //
 //  GroupMakers.h
 //  PlusPlus
@@ -61,4 +62,3 @@ namespace PlusPlus
        }
    }
 
-#endif

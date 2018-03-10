@@ -1,3 +1,4 @@
+#pragma once
 //
 //  ForwardAsNonconstPointer.h
 //  PlusPlus
@@ -5,9 +6,6 @@
 //  Created by Lisa Lippincott on 8/28/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
-
-#ifndef PLUSPLUS_FORWARDASNONCONSTPOINTER_H
-#define PLUSPLUS_FORWARDASNONCONSTPOINTER_H
 
 #include "ForwardAsPointer.h"
 
@@ -41,4 +39,3 @@ namespace PlusPlus
        };
    }
 
-#endif

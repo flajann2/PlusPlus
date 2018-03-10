@@ -1,3 +1,4 @@
+#pragma once
 //
 //  Inverted.h
 //  PlusPlus
@@ -5,9 +6,6 @@
 //  Created by Lisa Lippincott on 8/28/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
-
-#ifndef PLUSPLUS_INVERTED_H
-#define PLUSPLUS_INVERTED_H
 
 #include <utility>
 
@@ -95,4 +93,3 @@ namespace PlusPlus
        };
    }
 
-#endif

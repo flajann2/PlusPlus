@@ -1,3 +1,4 @@
+#pragma once
 //
 //  PointerToValue.h
 //  PlusPlus
@@ -65,4 +66,4 @@ namespace PlusPlus
        };
    }
 
-#endif
+
