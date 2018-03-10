@@ -1,13 +1,12 @@
+#pragma once
 //
 //  Po7_socket.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/30/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PO7_SOCKET_H
-#define PO7_SOCKET_H
 
 #include "Po7_Basics.h"
 #include "Po7_is_sockaddr.h"
@@ -29,7 +28,7 @@ namespace Po7
             static const bool hasComparison             = true;
            };
 
-        using socket_t = PlusPlus::Boxed< SocketTag >;
+        using socket_t = cwrap::Boxed< SocketTag >;
 
     // socket_in_domain represents a socket in a specific domain
         template < socket_domain_t >
@@ -42,7 +41,7 @@ namespace Po7
            };
 
         template < socket_domain_t domain >
-        using socket_in_domain = PlusPlus::Boxed< SocketInDomainTag<domain> >;
+        using socket_in_domain = cwrap::Boxed< SocketInDomainTag<domain> >;
 
         template < socket_domain_t domain >
         socket_in_domain< domain > domain_cast( socket_t s )
@@ -55,7 +54,7 @@ namespace Po7
     // unique_socket refers to a socket, and represents the obligation to close it
         struct SocketDeleter
            {
-            using pointer = PlusPlus::PointerToValue< socket_t >;
+            using pointer = cwrap::PointerToValue< socket_t >;
             void operator()( pointer s ) const;
            };
 
@@ -65,7 +64,7 @@ namespace Po7
         template < socket_domain_t domain >
         struct SocketInDomainDeleter
            {
-            using pointer = PlusPlus::PointerToValue< socket_in_domain<domain> >;
+            using pointer = cwrap::PointerToValue< socket_in_domain<domain> >;
             void operator()( pointer s ) const      { SocketDeleter()( s ); }
             operator SocketDeleter() const          { return SocketDeleter(); }
            };
@@ -83,18 +82,17 @@ namespace Po7
         
     // socket_type_t is the second paremeter to socket()
         enum class socket_type_t: int {};
-        template <> struct Wrapper< socket_type_t >: PlusPlus::EnumWrapper< socket_type_t > {};
+        template <> struct Wrapper< socket_type_t >: cwrap::EnumWrapper< socket_type_t > {};
 
         const socket_type_t sock_stream    = socket_type_t( SOCK_STREAM );
         const socket_type_t sock_dgram     = socket_type_t( SOCK_DGRAM );
         const socket_type_t sock_seqpacket = socket_type_t( SOCK_SEQPACKET );
         #ifdef SOCK_RAW
             const socket_type_t sock_raw   = socket_type_t( SOCK_RAW );
-        #endif
 
     // socket_protocol_t is the third paremeter to socket()
         enum class socket_protocol_t: int;
-        template <> struct Wrapper< socket_protocol_t >: PlusPlus::EnumWrapper< socket_protocol_t > {};
+        template <> struct Wrapper< socket_protocol_t >: cwrap::EnumWrapper< socket_protocol_t > {};
     
     // socket() creates sockets, and close() gets rid of them.
     // Calling close allows any final errors to be thrown.
@@ -199,7 +197,7 @@ namespace Po7
             static const bool hasBitwise                    = true;
            };
 
-        using msg_flags_t = PlusPlus::Boxed< MessageFlagsTag >;
+        using msg_flags_t = cwrap::Boxed< MessageFlagsTag >;
 
         const msg_flags_t msg_eor      = msg_flags_t( MSG_EOR );
         const msg_flags_t msg_oob      = msg_flags_t( MSG_OOB );
@@ -212,23 +210,23 @@ namespace Po7
 
         template < class Buffer >
         auto send( socket_t s, const Buffer& b, msg_flags_t f = msg_flags_t() )
-        -> typename std::enable_if< PlusPlus::stdish::is_bufferlike<Buffer>::value, std::size_t >::type
+        -> typename std::enable_if< cwrap::stdish::is_bufferlike<Buffer>::value, std::size_t >::type
            {
-            return send( s, PlusPlus::stdish::bufferlike_data( b ), PlusPlus::stdish::bufferlike_size( b ), f );
+            return send( s, cwrap::stdish::bufferlike_data( b ), cwrap::stdish::bufferlike_size( b ), f );
            }
         
         template < class Buffer >
         auto recv( socket_t s, Buffer& b, msg_flags_t f = msg_flags_t() )
-        -> typename std::enable_if< PlusPlus::stdish::is_bufferlike<Buffer>::value, std::size_t >::type
+        -> typename std::enable_if< cwrap::stdish::is_bufferlike<Buffer>::value, std::size_t >::type
            {
-            return recv( s, PlusPlus::stdish::bufferlike_data( b ), PlusPlus::stdish::bufferlike_size( b ), f );
+            return recv( s, cwrap::stdish::bufferlike_data( b ), cwrap::stdish::bufferlike_size( b ), f );
            }
         
 
 
     // shutdown_how_t is a parameter to shutdown()
         enum class shutdown_how_t: int {};
-        template <> struct Wrapper< shutdown_how_t >: PlusPlus::EnumWrapper< shutdown_how_t > {};
+        template <> struct Wrapper< shutdown_how_t >: cwrap::EnumWrapper< shutdown_how_t > {};
 
         const shutdown_how_t shut_rd   = shutdown_how_t( SHUT_RD );
         const shutdown_how_t shut_wr   = shutdown_how_t( SHUT_WR );
@@ -238,4 +236,3 @@ namespace Po7
         void shutdown( socket_t, shutdown_how_t );
    }
 
-#endif

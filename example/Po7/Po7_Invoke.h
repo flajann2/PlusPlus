@@ -1,13 +1,12 @@
+#pragma once
 //
 //  Po7_Invoke.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/31/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PO7_INVOKE_H
-#define PO7_INVOKE_H
 
 #include "Po7_Basics.h"
 #include "Forwarder.h"
@@ -16,22 +15,22 @@
 
 namespace Po7
    {
-    template < class T > struct Forwarder: PlusPlus::ForwardOutputsAndNonscalarsAsPointers<T> {};
+    template < class T > struct Forwarder: cwrap::ForwardOutputsAndNonscalarsAsPointers<T> {};
     
     
     
     template < class R, class F, class... P >
     auto Invoke( R&& r, F&& f, P&&... p )
-    -> decltype( PlusPlus::Invoke< Wrapper, Seizer, Forwarder >( std::forward<R>(r),
+    -> decltype( cwrap::Invoke< Wrapper, Seizer, Forwarder >( std::forward<R>(r),
                                                                  std::forward<F>(f),
                                                                  std::forward<P>(p)... ) )
        {
-        return   PlusPlus::Invoke< Wrapper, Seizer, Forwarder >( std::forward<R>(r),
+        return   cwrap::Invoke< Wrapper, Seizer, Forwarder >( std::forward<R>(r),
                                                                  std::forward<F>(f),
                                                                  std::forward<P>(p)... );
        }
     
-    using namespace PlusPlus::GroupMakers;
+    using namespace cwrap::GroupMakers;
     
     
     inline std::system_error MakeSystemErrorFromErrno()
@@ -56,4 +55,3 @@ namespace Po7
        };
    }
 
-#endif

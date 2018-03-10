@@ -1,13 +1,12 @@
+#pragma once
 //
 //  Po7_inet.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 9/1/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PO7_INET_H
-#define PO7_INET_H
 
 #include "Po7_in.h"
 #include "Po7_socket.h"
@@ -58,4 +57,3 @@ namespace Po7
            }
    }
 
-#endif

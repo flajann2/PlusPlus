@@ -1,6 +1,6 @@
 //
 //  Po7_socket.cpp
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/30/14.
 //  Released into the public domain by Lisa Lippincott, 2014.

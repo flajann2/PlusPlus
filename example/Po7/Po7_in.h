@@ -1,13 +1,12 @@
+#pragma once
 //
 //  Po7_in.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/31/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PO7_IN_H
-#define PO7_IN_H
 
 #include "Po7_Basics.h"
 #include "Po7_is_sockaddr.h"
@@ -18,7 +17,7 @@ namespace Po7
    {
     // in_port_t
         enum class in_port_t: ::in_port_t {};
-        template <> struct Wrapper< in_port_t >: PlusPlus::EnumWrapper< in_port_t > {};
+        template <> struct Wrapper< in_port_t >: cwrap::EnumWrapper< in_port_t > {};
             // Note that this is in network byte order, per POSIX.
         
         using in_port_number = ::in_port_t;    // an integer type, meaning host byte order.
@@ -35,7 +34,7 @@ namespace Po7
 
     // in_addr_t
         enum class in_addr_t: ::in_addr_t {};
-        template <> struct Wrapper< in_addr_t >: PlusPlus::EnumWrapper< in_addr_t > {};
+        template <> struct Wrapper< in_addr_t >: cwrap::EnumWrapper< in_addr_t > {};
             // Note that this is in network byte order, per POSIX.
 
         using in_addr_number = ::in_addr_t;    // an integer type, meaning host byte order.
@@ -91,4 +90,3 @@ namespace Po7
         std::string  MakeAnything( ThingToMake< std::string  >, const sockaddr_in6& );
    }
 
-#endif

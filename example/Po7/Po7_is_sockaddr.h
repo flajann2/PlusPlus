@@ -1,13 +1,12 @@
+#pragma once
 //
 //  Po7_is_sockaddr.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/31/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-#ifndef PO7_IS_SOCKADDR_H
-#define PO7_IS_SOCKADDR_H
 
 #include <sys/socket.h>
 
@@ -46,7 +45,7 @@ namespace Po7
 
     // socket_domain_t is effectively a template parameter, determing the address type of a socket.
         enum class socket_domain_t: int {};
-        template <> struct Wrapper< socket_domain_t >: PlusPlus::EnumWrapper< socket_domain_t > {};
+        template <> struct Wrapper< socket_domain_t >: cwrap::EnumWrapper< socket_domain_t > {};
 
         const socket_domain_t af_inet   = socket_domain_t( AF_INET );
         const socket_domain_t af_unix   = socket_domain_t( AF_UNIX );
@@ -64,4 +63,3 @@ namespace Po7
         template < class addr_type > struct sockaddr_domain;
    }
 
-#endif

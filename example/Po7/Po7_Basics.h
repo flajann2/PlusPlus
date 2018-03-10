@@ -1,7 +1,7 @@
 #pragma once
 //
 //  Po7_Basics.h
-//  PlusPlus
+//  cwrap
 //
 //  Created by Lisa Lippincott on 8/30/14.
 //  Released into the public domain by Lisa Lippincott, 2014.
@@ -14,23 +14,26 @@
 
 namespace Po7
 {
-  // Wrap and Unwrap convert between Po7 wrapped types and the underlying type used by POSIX.
-  // All PlusPlus::Boxed types used as parameters or retured by Po7 are treated as wrapped by Po7;
-  // other types are marked as wrapped by specializations of Po7::Wrapper.
+  // Wrap and Unwrap convert between Po7 wrapped types
+  // and the underlying type used by POSIX.  All
+  // cwrap::Boxed types used as parameters or
+  // retured by Po7 are treated as wrapped by Po7;
+  // other types are marked as wrapped by
+  // specializations of Po7::Wrapper.
   //
-  // See PlusPlus/Wrapper.h for details.
+  // See cwrap/Wrapper.h for details.
   
-  template < class W > struct Wrapper: PlusPlus::AllBoxedTypesAreWrapped<W> {};
+  template < class W > struct Wrapper: cwrap::AllBoxedTypesAreWrapped<W> {};
   
   template < class W, class U >
   auto Wrap( U&& u )
-    -> decltype( PlusPlus::Wrap< Wrapper, W >( std::forward<U>(u) ) )
-  { return  PlusPlus::Wrap< Wrapper, W >( std::forward<U>(u) ); }
+    -> decltype( cwrap::Wrap< Wrapper, W >( std::forward<U>(u) ) )
+  { return  cwrap::Wrap< Wrapper, W >( std::forward<U>(u) ); }
   
   template < class W >
   auto Unwrap( W&& w )
-    -> decltype( PlusPlus::Unwrap< Wrapper >( std::forward<W>(w) ) )
-  { return  PlusPlus::Unwrap< Wrapper >( std::forward<W>(w) ); }
+    -> decltype( cwrap::Unwrap< Wrapper >( std::forward<W>(w) ) )
+  { return  cwrap::Unwrap< Wrapper >( std::forward<W>(w) ); }
   
   // Seize and Release convert between Po7 owned resources and the underlying type used by POSIX.
   // All std::unique_ptr types used as parameters or retured by Po7 are treated as seized by Po7;
@@ -38,19 +41,19 @@ namespace Po7
   //
   // Release generally only works on rvalues.
   //
-  // See PlusPlus/Seizer.h for details.
+  // See cwrap/Seizer.h for details.
   
-  template < class S > struct Seizer: PlusPlus::AllUniquePtrsAreSeized<S> {};
+  template < class S > struct Seizer: cwrap::AllUniquePtrsAreSeized<S> {};
   
   template < class S, class R >
   auto Seize( R&& r )
-    -> decltype( PlusPlus::Seize<Seizer,S>( std::forward<R>(r) ) )
-  { return  PlusPlus::Seize<Seizer,S>( std::forward<R>(r) ); }
+    -> decltype( cwrap::Seize<Seizer,S>( std::forward<R>(r) ) )
+  { return  cwrap::Seize<Seizer,S>( std::forward<R>(r) ); }
   
   template < class S >
   auto Release( S&& s )
-    -> decltype( PlusPlus::Release<Seizer>( std::forward<S>(s) ) )
-  { return  PlusPlus::Release<Seizer>( std::forward<S>(s) ); }
+    -> decltype( cwrap::Release<Seizer>( std::forward<S>(s) ) )
+  { return  cwrap::Release<Seizer>( std::forward<S>(s) ); }
   
   // Make handles conversions and construction-like operations for types that aren't Po7 wrappers.
   // It's used to fill in POSIX structure types, like sockaddr_in, and also to convert to C++ standard
