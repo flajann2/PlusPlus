@@ -1,0 +1,5 @@
+* Tests for cwrap
+  Someday we will have this. Not my top
+  priority right now. Feel free to write some 
+  and do a pull request. Thanks.
+
