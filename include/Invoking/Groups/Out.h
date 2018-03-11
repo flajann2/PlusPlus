@@ -7,11 +7,10 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-
-#include "Checked.h"
-#include "Thrown.h"
-#include "Returned.h"
-#include "integer_sequence.h"
+#include "Invoking/Group modifiers/Checked.h"
+#include "Invoking/Group modifiers/Thrown.h"
+#include "Invoking/Group modifiers/Returned.h"
+#include "Standardish/integer_sequence.h"
 
 #include <tuple>
 

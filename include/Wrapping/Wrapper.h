@@ -10,7 +10,7 @@
 
 #include "Boxed.h"
 #include "EnumWrapper.h"
-#include "Inverted.h"
+#include "Invoking/Inverted.h"
 
 #include <utility>
 #include <type_traits>

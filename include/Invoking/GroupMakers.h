@@ -8,14 +8,14 @@
 //
 
 
-#include "Returned.h"
-#include "Thrown.h"
-#include "Checked.h"
-#include "In.h"
-#include "Out.h"
-#include "InOut.h"
-#include "NotPassed.h"
-#include "Result.h"
+#include "Group modifiers/Returned.h"
+#include "Group modifiers/Thrown.h"
+#include "Group modifiers/Checked.h"
+#include "Groups/In.h"
+#include "Groups/Out.h"
+#include "Groups/InOut.h"
+#include "Groups/NotPassed.h"
+#include "Groups/Result.h"
 
 /*
     The namespace cwrap::GroupMakers contains all the names needed for 

@@ -8,7 +8,7 @@
 //
 
 #include "UniquePtrSeizer.h"
-#include "Inverted.h"
+#include "Invoking/Inverted.h"
 
 #include <memory>
 

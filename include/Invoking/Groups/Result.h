@@ -7,10 +7,9 @@
 //  Released into the public domain by Lisa Lippincott, 2014.
 //
 
-
-#include "Checked.h"
-#include "Thrown.h"
-#include "Returned.h"
+#include "Invoking/Group modifiers/Checked.h"
+#include "Invoking/Group modifiers/Thrown.h"
+#include "Invoking/Group modifiers/Returned.h"
 
 /*
     Result<R>() produces a result group that expects a result of type R.
