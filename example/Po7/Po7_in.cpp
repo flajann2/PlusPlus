@@ -141,14 +141,14 @@ sockaddr_in Po7::MakeAnything( ThingToMake< sockaddr_in >, in_addr_t address, in
    }
 
 sockaddr_in Po7::MakeAnything( ThingToMake< sockaddr_in >, const std::string& text )
-   {
-    std::string::const_iterator afterLastColon = std::find( text.rbegin(), text.rend(), ':' ).base();
-    if ( afterLastColon == text.begin() )
-        throw std::domain_error( "Invalid IP4 socket address" );
-    
-    return Make< sockaddr_in >( Make< in_addr_t >( std::string( text.begin(),   afterLastColon - 1 ) ),
-                                Make< in_port_t >( std::string( afterLastColon, text.end() ) ) );
-   }
+{
+  std::string::const_iterator afterLastColon = std::find( text.rbegin(), text.rend(), ':' ).base();
+  if ( afterLastColon == text.begin() )
+    throw std::domain_error( "Invalid IP4 socket address" );
+  
+  return Make< sockaddr_in >( Make< in_addr_t >( std::string( text.begin(),   afterLastColon - 1 ) ),
+                              Make< in_port_t >( std::string( afterLastColon, text.end() ) ) );
+}
 
 std::string Po7::MakeAnything( ThingToMake< std::string >, const sockaddr_in& address )
    {

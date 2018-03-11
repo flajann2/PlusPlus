@@ -55,10 +55,13 @@ namespace Po7
     -> decltype( cwrap::Release<Seizer>( std::forward<S>(s) ) )
   { return  cwrap::Release<Seizer>( std::forward<S>(s) ); }
   
-  // Make handles conversions and construction-like operations for types that aren't Po7 wrappers.
-  // It's used to fill in POSIX structure types, like sockaddr_in, and also to convert to C++ standard
-  // types, like std::string or std::chrono::duration.  Make is extended by overloading MakeAnything,
-  // with ThingToMake<T> as the first parameter type. 
+  // Make handles conversions and construction-like
+  // operations for types that aren't Po7 wrappers.
+  // It's used to fill in POSIX structure types, like
+  // sockaddr_in, and also to convert to C++ standard
+  // types, like std::string or std::chrono::duration.
+  // Make is extended by overloading MakeAnything, with
+  // ThingToMake<T> as the first parameter type.
   
   template < class Result > struct ThingToMake {};
   

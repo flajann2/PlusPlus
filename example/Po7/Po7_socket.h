@@ -102,12 +102,12 @@ namespace Po7
         
         void close( unique_socket s );
 
-    // The template form of socket produces a socket typed to its domain, making address operations easier.
-        template < socket_domain_t domain >
-        unique_socket_in_domain< domain > socket( socket_type_t type, socket_protocol_t protocol )
-           {
-            return domain_cast< domain >( socket( domain, type, protocol ) );
-           }
+     // The template form of socket produces a socket typed to its domain, making address operations easier.
+     template < socket_domain_t domain >
+     unique_socket_in_domain< domain > socket( socket_type_t type, socket_protocol_t protocol )
+     {
+       return domain_cast< domain >( socket( domain, type, protocol ) );
+     }
     
     
 
@@ -119,120 +119,124 @@ namespace Po7
         using ::socklen_t;
     
     
-    // bind, connect, accept, getsockname, and getpeername are callable with a sockaddr and a length in their basic form.
-        void bind( socket_t, const sockaddr&, socklen_t );
-        void connect( socket_t, const sockaddr&, socklen_t );
-        unique_socket accept( socket_t );
-        unique_socket accept( socket_t, sockaddr&, socklen_t& );
-        void getsockname( socket_t, sockaddr&, socklen_t& );
-        void getpeername( socket_t, sockaddr&, socklen_t& );
+     // bind, connect, accept, getsockname, and
+     // getpeername are callable with a sockaddr and a
+     // length in their basic form.
+     void bind( socket_t, const sockaddr&, socklen_t );
+     void connect( socket_t, const sockaddr&, socklen_t );
+     unique_socket accept( socket_t );
+     unique_socket accept( socket_t, sockaddr&, socklen_t& );
+     void getsockname( socket_t, sockaddr&, socklen_t& );
+     void getpeername( socket_t, sockaddr&, socklen_t& );
     
-    // bind, connect, accept, getsockname, and getpeername are also callable with domain-typed sockets and addresses.
-        template < socket_domain_t domain >
-        void bind( socket_in_domain<domain> s, const sockaddr_type<domain>& a )
-           {
-            bind( s, sockaddr_cast< const sockaddr& >( a ), sizeof( a ) );
-           }
+     // bind, connect, accept, getsockname, and
+     // getpeername are also callable with domain-typed
+     // sockets and addresses.
+     template < socket_domain_t domain >
+     void bind( socket_in_domain<domain> s, const sockaddr_type<domain>& a )
+     {
+       bind( s, sockaddr_cast< const sockaddr& >( a ), sizeof( a ) );
+     }
 
-        template < socket_domain_t domain >
-        void connect( socket_in_domain<domain> s, const sockaddr_type<domain>& a )
-           {
-            connect( s, sockaddr_cast< const sockaddr& >( a ), sizeof( a ) );
-           }
+     template < socket_domain_t domain >
+     void connect( socket_in_domain<domain> s, const sockaddr_type<domain>& a )
+     {
+       connect( s, sockaddr_cast< const sockaddr& >( a ), sizeof( a ) );
+     }
+     
+     template < socket_domain_t domain >
+     auto accept( socket_in_domain<domain> s )
+       -> std::tuple< unique_socket_in_domain<domain>, sockaddr_type<domain> >
+     {
+       sockaddr_type< domain > address;
+       socklen_t addressLength = sizeof( address );
+       sockaddr& genericAddress = sockaddr_cast< sockaddr& >( address );
+       
+       unique_socket accepted  = accept( s, genericAddress, addressLength );
+       
+       if ( Wrap<socket_domain_t>( genericAddress.sa_family ) != domain )
+         throw std::domain_error( "Socket not in the expected domain" );
+       
+       return std::make_tuple( domain_cast<domain>( std::move( accepted ) ), address );
+     }
+     
+     template < socket_domain_t domain >
+     auto getsockname( socket_in_domain<domain> s )
+       -> sockaddr_type< domain >
+     {
+       sockaddr_type< domain > address;
+       socklen_t addressLength = sizeof( address );
+       sockaddr& genericAddress = sockaddr_cast< sockaddr& >( address );
+       
+       getsockname( s, genericAddress, addressLength );
+       
+       if ( Wrap<socket_domain_t>( genericAddress.sa_family ) != domain )
+         throw std::domain_error( "Socket not in the expected domain" );
+       
+       return address;
+     }
+     
+     template < socket_domain_t domain >
+     auto getpeername( socket_in_domain<domain> s )
+       -> sockaddr_type< domain >
+     {
+       sockaddr_type< domain > address;
+       socklen_t addressLength = sizeof( address );
+       sockaddr& genericAddress = sockaddr_cast< sockaddr& >( address );
+       
+       getpeername( s, genericAddress, addressLength );
+       
+       if ( Wrap<socket_domain_t>( genericAddress.sa_family ) != domain )
+         throw std::domain_error( "Socket not in the expected domain" );
+       
+       return address;
+     }
+     
+     // msg_flags_t is a parameter to send() and recv()
+     struct MessageFlagsTag
+     {
+       constexpr int operator()() const                { return 0; }
+       static const bool hasEquality                   = true;
+       static const bool hasComparison                 = true;
+       static const bool hasBitwise                    = true;
+     };
 
-        template < socket_domain_t domain >
-        auto accept( socket_in_domain<domain> s )
-        -> std::tuple< unique_socket_in_domain<domain>, sockaddr_type<domain> >
-           {
-            sockaddr_type< domain > address;
-            socklen_t addressLength = sizeof( address );
-            sockaddr& genericAddress = sockaddr_cast< sockaddr& >( address );
-            
-            unique_socket accepted  = accept( s, genericAddress, addressLength );
-            
-            if ( Wrap<socket_domain_t>( genericAddress.sa_family ) != domain )
-                throw std::domain_error( "Socket not in the expected domain" );
-            
-            return std::make_tuple( domain_cast<domain>( std::move( accepted ) ), address );
-           }
-        
-        template < socket_domain_t domain >
-        auto getsockname( socket_in_domain<domain> s )
-        -> sockaddr_type< domain >
-           {
-            sockaddr_type< domain > address;
-            socklen_t addressLength = sizeof( address );
-            sockaddr& genericAddress = sockaddr_cast< sockaddr& >( address );
-
-            getsockname( s, genericAddress, addressLength );
-
-            if ( Wrap<socket_domain_t>( genericAddress.sa_family ) != domain )
-                throw std::domain_error( "Socket not in the expected domain" );
-            
-            return address;
-           }
-        
-        template < socket_domain_t domain >
-        auto getpeername( socket_in_domain<domain> s )
-        -> sockaddr_type< domain >
-           {
-            sockaddr_type< domain > address;
-            socklen_t addressLength = sizeof( address );
-            sockaddr& genericAddress = sockaddr_cast< sockaddr& >( address );
-
-            getpeername( s, genericAddress, addressLength );
-            
-            if ( Wrap<socket_domain_t>( genericAddress.sa_family ) != domain )
-                throw std::domain_error( "Socket not in the expected domain" );
-            
-            return address;
-           }
-
-    // msg_flags_t is a parameter to send() and recv()
-        struct MessageFlagsTag
-           {
-            constexpr int operator()() const                { return 0; }
-            static const bool hasEquality                   = true;
-            static const bool hasComparison                 = true;
-            static const bool hasBitwise                    = true;
-           };
-
-        using msg_flags_t = cwrap::Boxed< MessageFlagsTag >;
-
-        const msg_flags_t msg_eor      = msg_flags_t( MSG_EOR );
-        const msg_flags_t msg_oob      = msg_flags_t( MSG_OOB );
-        const msg_flags_t msg_peek     = msg_flags_t( MSG_PEEK );
-        const msg_flags_t msg_waitall  = msg_flags_t( MSG_WAITALL );
-
-    // send and recv send and receive the data
-        std::size_t send( socket_t, const void *buffer, std::size_t length, msg_flags_t = msg_flags_t() );
-        std::size_t recv( socket_t,       void *buffer, std::size_t length, msg_flags_t = msg_flags_t() );
-
-        template < class Buffer >
-        auto send( socket_t s, const Buffer& b, msg_flags_t f = msg_flags_t() )
-        -> typename std::enable_if< cwrap::stdish::is_bufferlike<Buffer>::value, std::size_t >::type
-           {
-            return send( s, cwrap::stdish::bufferlike_data( b ), cwrap::stdish::bufferlike_size( b ), f );
-           }
-        
-        template < class Buffer >
-        auto recv( socket_t s, Buffer& b, msg_flags_t f = msg_flags_t() )
-        -> typename std::enable_if< cwrap::stdish::is_bufferlike<Buffer>::value, std::size_t >::type
-           {
-            return recv( s, cwrap::stdish::bufferlike_data( b ), cwrap::stdish::bufferlike_size( b ), f );
-           }
-        
-
-
-    // shutdown_how_t is a parameter to shutdown()
-        enum class shutdown_how_t: int {};
-        template <> struct Wrapper< shutdown_how_t >: cwrap::EnumWrapper< shutdown_how_t > {};
-
-        const shutdown_how_t shut_rd   = shutdown_how_t( SHUT_RD );
-        const shutdown_how_t shut_wr   = shutdown_how_t( SHUT_WR );
-        const shutdown_how_t shut_rdwr = shutdown_how_t( SHUT_RDWR );
-
-    // shutdown ends communication on a socket
-        void shutdown( socket_t, shutdown_how_t );
-   }
+     using msg_flags_t = cwrap::Boxed< MessageFlagsTag >;
+     
+     const msg_flags_t msg_eor      = msg_flags_t( MSG_EOR );
+     const msg_flags_t msg_oob      = msg_flags_t( MSG_OOB );
+     const msg_flags_t msg_peek     = msg_flags_t( MSG_PEEK );
+     const msg_flags_t msg_waitall  = msg_flags_t( MSG_WAITALL );
+     
+     // send and recv send and receive the data
+     std::size_t send( socket_t, const void *buffer, std::size_t length, msg_flags_t = msg_flags_t() );
+     std::size_t recv( socket_t,       void *buffer, std::size_t length, msg_flags_t = msg_flags_t() );
+     
+     template < class Buffer >
+     auto send( socket_t s, const Buffer& b, msg_flags_t f = msg_flags_t() )
+       -> typename std::enable_if< cwrap::stdish::is_bufferlike<Buffer>::value, std::size_t >::type
+     {
+       return send( s, cwrap::stdish::bufferlike_data( b ), cwrap::stdish::bufferlike_size( b ), f );
+     }
+     
+     template < class Buffer >
+     auto recv( socket_t s, Buffer& b, msg_flags_t f = msg_flags_t() )
+       -> typename std::enable_if< cwrap::stdish::is_bufferlike<Buffer>::value, std::size_t >::type
+     {
+       return recv( s, cwrap::stdish::bufferlike_data( b ), cwrap::stdish::bufferlike_size( b ), f );
+     }
+     
+     
+     
+     // shutdown_how_t is a parameter to shutdown()
+     enum class shutdown_how_t: int {};
+     template <> struct Wrapper< shutdown_how_t >: cwrap::EnumWrapper< shutdown_how_t > {};
+     
+     const shutdown_how_t shut_rd   = shutdown_how_t( SHUT_RD );
+     const shutdown_how_t shut_wr   = shutdown_how_t( SHUT_WR );
+     const shutdown_how_t shut_rdwr = shutdown_how_t( SHUT_RDWR );
+     
+     // shutdown ends communication on a socket
+     void shutdown( socket_t, shutdown_how_t );
+}
 
